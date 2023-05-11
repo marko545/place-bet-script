@@ -19,7 +19,7 @@ async function createAndUpdateBetSlip(index) {
   const signature = process.env.SIGNATURE
 
   try {
-    const tx = await contract.placeBet(index, 10000, signature);
+    const tx = await contract.placeBet(index, 100, signature);
     console.log(`Transaction sent: ${tx.hash}`);
     const receipt = await tx.wait();
     console.log(`Transaction confirmed in block ${receipt.blockNumber}`);
@@ -34,7 +34,7 @@ async function createAndUpdateBetSlip(index) {
     //console.log(`Logged in with token: ${token}`);
 
     const postData = {
-      betAmount: 1,
+      betAmount: 0.01,
       players: [
         {
           id: 6733,
@@ -67,7 +67,7 @@ async function createAndUpdateBetSlip(index) {
   }
 }
 
-for (let i = 0; i < 50; i++) {
+for (let i = 0; i < 5; i++) {
   setTimeout(() => {
     createAndUpdateBetSlip(i);
   }, i * 1800);
